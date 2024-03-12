@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
     return (
         <>
-            <div className="w-screen flex flex-col items-center gap-10 p-5">
+            <div className="w-screen h-screen flex flex-col items-center justify-center justify-items-center py-10">
                 <div>
                     <h1 className="text-4xl font-bold">ERC 20 TOKEN INDEXER</h1>
                 </div>
@@ -36,23 +36,29 @@ export default function Home() {
                             <div
                                 {...(!ready && {
                                     "aria-hidden": true,
-                                    style: {
-                                        opacity: 0,
-                                        pointerEvents: "none",
-                                        userSelect: "none",
-                                    },
+                                    // style: {
+                                    //     opacity: 0,
+                                    //     pointerEvents: "none",
+                                    //     userSelect: "none",
+                                    // },
                                 })}
+                                className="h-full w-full flex justify-center items-center"
                             >
                                 {(() => {
                                     if (!connected) {
                                         return (
-                                            <button
-                                                className="bg-blue-500 px-5 py-2 hover:bg-blue-400 rounded-lg text-white"
-                                                onClick={openConnectModal}
-                                                type="button"
-                                            >
-                                                Connect Wallet
-                                            </button>
+                                            <>
+                                                <div>
+                                                  
+                                                </div>
+                                                <button
+                                                    className="bg-blue-500 px-5 py-2 hover:bg-blue-400 rounded-lg text-white"
+                                                    onClick={openConnectModal}
+                                                    type="button"
+                                                >
+                                                    Connect Wallet
+                                                </button>
+                                            </>
                                         );
                                     }
 
@@ -69,7 +75,7 @@ export default function Home() {
 
                                     return (
                                         <>
-                                            <div className="flex flex-col items-center gap-3">
+                                            <div className="flex flex-col items-center gap-3 h-full w-full">
                                                 <div
                                                     style={{
                                                         display: "flex",
@@ -137,7 +143,7 @@ export default function Home() {
                                                         {account.address}
                                                     </h1>
                                                 </div>
-                                                <div className="flex justify-center items-center">
+                                                <div className="flex justify-center items-center h-full w-full">
                                                     <Card account={account} />
                                                 </div>
                                             </div>
