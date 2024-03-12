@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
                 <RainbowKitProvider>
-                    <Component {...pageProps} />;
+                    <Component {...pageProps} />
                 </RainbowKitProvider>
             </QueryClientProvider>
         </WagmiProvider>
