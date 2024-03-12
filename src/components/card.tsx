@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Alchemy, Network } from "alchemy-sdk";
 import { GridLoader } from "react-spinners";
-import Image from "next/image";
 
 const Card = ({ account }: any) => {
     const [tokenResult, setTokenResult] = useState<any>([]);
@@ -57,7 +56,7 @@ const Card = ({ account }: any) => {
                             className="flex border-black border-2 flex-col justify-evenly h-max rounded-2xl overflow-hidden"
                         >
                             <div>
-                                <Image
+                                <img
                                     src={
                                         el.tokenMetaData?.logo
                                             ? el.tokenMetaData?.logo
