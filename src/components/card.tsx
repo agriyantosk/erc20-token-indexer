@@ -1,15 +1,44 @@
-const Card = ({ tokenDatas }: any) => {
+import { useEffect, useState } from "react";
+import { Alchemy, Network } from "alchemy-sdk";
+
+const Card = ({ account }: any) => {
+    const [tokenDatas, setTokenDatas] = useState<any>([]);
+    const [tokenResult, setTokenResult] = useState<any>([]);
+
+    async function getTokenBalances() {
+        const config = {
+            apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY,
+            network: Network.ETH_MAINNET,
+        };
+
+        const alchemy = new Alchemy(config);
+        const data = await alchemy.core.getTokenBalances(account.address);
+
+        setTokenDatas(data.tokenBalances);
+
+        for (let j = 0; j < tokenDatas.length; j++) {
+            const tokenData = await alchemy.core.getTokenMetadata(
+                data.tokenBalances[j].contractAddress
+            );
+            tokenDatas[j].tokenMetaData = tokenData;
+        }
+        setTokenResult(tokenDatas);
+    }
+
+    useEffect(() => {
+        getTokenBalances();
+    }, []);
     if (!tokenDatas) {
         return <></>;
     } else {
         return (
             <>
                 <div className="flex flex-wrap justify-center gap-10">
-                    {tokenDatas &&
-                        tokenDatas.map((el: any, index: number) => (
+                    {tokenResult ? (
+                        tokenResult.map((el: any, index: number) => (
                             <div
                                 key={index}
-                                className="flex border-black border-2 flex-col rounded-2xl overflow-hidden"
+                                className="flex border-black border-2 flex-col justify-between rounded-2xl overflow-hidden"
                             >
                                 <div>
                                     <img
@@ -35,16 +64,16 @@ const Card = ({ tokenDatas }: any) => {
                                         <h1>{el.tokenData?.symbol} Balance:</h1>
                                         <h1>
                                             {parseInt(el.tokenBalance, 16) /
-                                                Math.pow(
-                                                    10,
-                                                    el.tokenData?.decimals
-                                                )}
+                                                1e18}{" "}
+                                            ETH
                                         </h1>
                                     </div>
                                 </div>
                             </div>
-                        ))}
-                    ;
+                        ))
+                    ) : (
+                        <h1>You haven't acquired any ERC20 tokens yet</h1>
+                    )}
                 </div>
             </>
         );
