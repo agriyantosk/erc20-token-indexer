@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Alchemy, Network } from "alchemy-sdk";
 import { GridLoader } from "react-spinners";
+import Image from "next/image";
 
 const Card = ({ account }: any) => {
     const [tokenResult, setTokenResult] = useState<any>([]);
@@ -44,7 +45,10 @@ const Card = ({ account }: any) => {
                 {loading ? (
                     <div className="h-full w-full flex flex-col gap-10 items-center justify-center pb-20">
                         <GridLoader />
-                        <h1>Please wait while we look for your available ERC20 tokens...</h1>
+                        <h1>
+                            Please wait while we look for your available ERC20
+                            tokens...
+                        </h1>
                     </div>
                 ) : tokenResult.length > 0 ? (
                     tokenResult.map((el: any, index: number) => (
@@ -53,7 +57,7 @@ const Card = ({ account }: any) => {
                             className="flex border-black border-2 flex-col justify-evenly h-max rounded-2xl overflow-hidden"
                         >
                             <div>
-                                <img
+                                <Image
                                     src={
                                         el.tokenMetaData?.logo
                                             ? el.tokenMetaData?.logo
@@ -83,7 +87,7 @@ const Card = ({ account }: any) => {
                         </div>
                     ))
                 ) : (
-                    <h1>You haven't acquired any ERC20 tokens yet</h1>
+                    <h1>You haven&apos;t acquired any ERC20 tokens yet</h1>
                 )}
             </div>
         </>
