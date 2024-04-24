@@ -10,13 +10,13 @@ const Card = ({ account }: any) => {
         async function getTokenBalances() {
             try {
                 const config = {
-                    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY,
-                    network: Network.ETH_MAINNET,
+                    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_BASE_API_KEY,
+                    network: Network.BASE_MAINNET,
                 };
 
                 const alchemy = new Alchemy(config);
                 const data = await alchemy.core.getTokenBalances(
-                    account.address
+                    account
                 );
 
                 const tokenDatas = await Promise.all(
@@ -27,7 +27,6 @@ const Card = ({ account }: any) => {
                         return { ...tokenBalance, tokenMetaData: tokenData };
                     })
                 );
-
                 setTokenResult(tokenDatas);
             } catch (error) {
                 console.error("Error fetching token balances:", error);
