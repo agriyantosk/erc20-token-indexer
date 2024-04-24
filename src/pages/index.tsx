@@ -11,7 +11,7 @@ export default function Home() {
                 <div>
                     <h1 className="text-4xl font-bold">ERC 20 TOKEN INDEXER</h1>
                 </div>
-                {/* <ConnectButton.Custom>
+                <ConnectButton.Custom>
                     {({
                         account,
                         chain,
@@ -48,9 +48,7 @@ export default function Home() {
                                     if (!connected) {
                                         return (
                                             <>
-                                                <div>
-                                                  
-                                                </div>
+                                                <div></div>
                                                 <button
                                                     className="bg-blue-500 px-5 py-2 hover:bg-blue-400 rounded-lg text-white"
                                                     onClick={openConnectModal}
@@ -75,76 +73,89 @@ export default function Home() {
 
                                     return (
                                         <>
+                                            <div className="flex flex-col items-center gap-3 h-full w-full">
+                                                <div
+                                                    style={{
+                                                        display: "flex",
+                                                        gap: 12,
+                                                    }}
+                                                >
+                                                    <button
+                                                        onClick={openChainModal}
+                                                        style={{
+                                                            display: "flex",
+                                                            alignItems:
+                                                                "center",
+                                                        }}
+                                                        type="button"
+                                                    >
+                                                        {chain.hasIcon && (
+                                                            <div
+                                                                style={{
+                                                                    background:
+                                                                        chain.iconBackground,
+                                                                    width: 12,
+                                                                    height: 12,
+                                                                    borderRadius: 999,
+                                                                    overflow:
+                                                                        "hidden",
+                                                                    marginRight: 4,
+                                                                }}
+                                                            >
+                                                                {chain.iconUrl && (
+                                                                    <img
+                                                                        alt={
+                                                                            chain.name ??
+                                                                            "Chain icon"
+                                                                        }
+                                                                        src={
+                                                                            chain.iconUrl
+                                                                        }
+                                                                        style={{
+                                                                            width: 12,
+                                                                            height: 12,
+                                                                        }}
+                                                                    />
+                                                                )}
+                                                            </div>
+                                                        )}
+                                                        {chain.name}
+                                                    </button>
 
+                                                    <button
+                                                        onClick={
+                                                            openAccountModal
+                                                        }
+                                                        type="button"
+                                                    >
+                                                        {account.displayName}
+                                                        {account.displayBalance
+                                                            ? ` (${account.displayBalance})`
+                                                            : ""}
+                                                    </button>
+                                                </div>
+                                                <div>
+                                                    <h1 className="text-xl">
+                                                        Connected Wallet
+                                                        Address:
+                                                        {account.address}
+                                                    </h1>
+                                                </div>
+                                                <div className="flex justify-center items-center h-full w-full">
+                                                    <Card
+                                                        account={
+                                                            account.address
+                                                        }
+                                                    />
+                                                </div>
+                                            </div>
                                         </>
                                     );
                                 })()}
                             </div>
                         );
                     }}
-                </ConnectButton.Custom> */}
-                <div className="flex flex-col items-center gap-3 h-full w-full">
-                    <div
-                        style={{
-                            display: "flex",
-                            gap: 12,
-                        }}
-                    >
-                        {/* <button
-                            onClick={openChainModal}
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                            }}
-                            type="button"
-                        >
-                            {chain.hasIcon && (
-                                <div
-                                    style={{
-                                        background: chain.iconBackground,
-                                        width: 12,
-                                        height: 12,
-                                        borderRadius: 999,
-                                        overflow: "hidden",
-                                        marginRight: 4,
-                                    }}
-                                >
-                                    {chain.iconUrl && (
-                                        <img
-                                            alt={chain.name ?? "Chain icon"}
-                                            src={chain.iconUrl}
-                                            style={{
-                                                width: 12,
-                                                height: 12,
-                                            }}
-                                        />
-                                    )}
-                                </div>
-                            )}
-                            {chain.name}
-                        </button>
-
-                        <button onClick={openAccountModal} type="button">
-                            {account.displayName}
-                            {account.displayBalance
-                                ? ` (${account.displayBalance})`
-                                : ""}
-                        </button> */}
-                    </div>
-                    <div>
-                        <h1 className="text-xl">
-                            Connected Wallet Address:
-                            0x1d4D51F08ab86985533Da9D574A3df68336c485D
-                        </h1>
-                    </div>
-                    <div className="flex justify-center items-center h-full w-full">
-                        <Card
-                            account={
-                                "0x1d4D51F08ab86985533Da9D574A3df68336c485D"
-                            }
-                        />
-                    </div>
-                </div>
+                </ConnectButton.Custom>
             </div>
         </>
     );
