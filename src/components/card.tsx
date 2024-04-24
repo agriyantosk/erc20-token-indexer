@@ -8,11 +8,10 @@ const Card = ({ account }: any) => {
 
     useEffect(() => {
         async function getTokenBalances() {
-            console.log(process.env.NEXT_PUBLIC_ALCHEMY_BASE_API_KEY)
             try {
                 const config = {
-                    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_BASE_API_KEY,
-                    network: Network.BASE_MAINNET,
+                    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ETH_MAINNET_API_KEY,
+                    network: Network.ETH_MAINNET,
                 };
 
                 const alchemy = new Alchemy(config);
