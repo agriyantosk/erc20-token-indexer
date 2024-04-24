@@ -15,9 +15,7 @@ const Card = ({ account }: any) => {
                 };
 
                 const alchemy = new Alchemy(config);
-                const data = await alchemy.core.getTokenBalances(
-                    account
-                );
+                const data = await alchemy.core.getTokenBalances(account);
 
                 const tokenDatas = await Promise.all(
                     data.tokenBalances.map(async (tokenBalance: any) => {
@@ -36,7 +34,8 @@ const Card = ({ account }: any) => {
         }
 
         getTokenBalances();
-    }, [account.address]);
+        console.log(tokenResult, "tokenResult");
+    }, [account.address, tokenResult]);
     return (
         <>
             <div className="flex flex-wrap justify-center gap-10 h-full w-full">
