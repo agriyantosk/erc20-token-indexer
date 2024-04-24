@@ -8,6 +8,7 @@ const Card = ({ account }: any) => {
 
     useEffect(() => {
         async function getTokenBalances() {
+            console.log(process.env.NEXT_PUBLIC_ALCHEMY_BASE_API_KEY)
             try {
                 const config = {
                     apiKey: process.env.NEXT_PUBLIC_ALCHEMY_BASE_API_KEY,
@@ -34,7 +35,6 @@ const Card = ({ account }: any) => {
         }
 
         getTokenBalances();
-        console.log(tokenResult, "tokenResult");
     }, [account.address, tokenResult]);
     return (
         <>
