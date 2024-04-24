@@ -10,8 +10,8 @@ const Card = ({ account }: any) => {
         async function getTokenBalances() {
             try {
                 const config = {
-                    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_BASE_API_KEY,
-                    network: Network.BASE_MAINNET,
+                    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_SEPOLIA_KEY,
+                    network: Network.ETH_SEPOLIA,
                 };
 
                 const alchemy = new Alchemy(config);

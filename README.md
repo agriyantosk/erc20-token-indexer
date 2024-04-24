@@ -11,7 +11,7 @@ First, clone and install the dependencies:
 git clone https://github.com/agriyantosk/erc20-token-indexer.git
 npm i
 ```
-Create and fill .env file with Seplia RPC API key
+Create and fill .env file with Sepolia RPC API key
 
 And then run:
 ```bash
